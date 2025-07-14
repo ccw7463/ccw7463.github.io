@@ -1,0 +1,75 @@
+---
+---
+
+/* prettier-ignore */
+@use 'main{%- if jekyll.environment == 'production' -%}.bundle{%- endif -%}';
+
+/* append your custom style below */
+
+/* 사이드바 CSS 변수 커스텀 */
+html:not([data-mode]),
+html[data-mode=light] {
+  --sidebar-bg: #f7d8ff !important; /* 사이드바 배경색 */
+  --sidebar-border-color: #e0e0e0 !important; /* 사이드바 테두리 색상 */
+  --sidebar-muted-color: #ffffff !important; /* 사이드바 텍스트 색상 */
+  --sidebar-active-color: #ffffff !important; /* 활성 메뉴 색상 */
+  --sidebar-hover-bg: rgba(255, 255, 255, 0.1) !important; /* 호버 배경색 */
+  --sidebar-btn-bg: rgba(255, 255, 255, 0.2) !important; /* 버튼 배경색 */
+  --sidebar-btn-color: #ffffff !important; /* 버튼 색상 */
+}
+
+/* 다크모드 사이드바 커스텀 */
+html[data-mode=dark] {
+  --sidebar-bg: #1a1a1a !important;
+  --sidebar-border-color: #333333 !important;
+  --sidebar-muted-color: #cccccc !important;
+  --sidebar-active-color: #ffffff !important;
+  --sidebar-hover-bg: rgba(255, 255, 255, 0.1) !important;
+  --sidebar-btn-bg: rgba(255, 255, 255, 0.1) !important;
+  --sidebar-btn-color: #cccccc !important;
+}
+
+/* 사이드바 너비 커스텀 */
+#sidebar {
+  width: 320px !important; /* 원하는 너비로 변경하세요 */
+}
+
+/* 큰 화면에서의 사이드바 너비 */
+@media all and (min-width: 1650px) {
+  #sidebar {
+    width: 320px !important; /* 큰 화면에서의 너비 */
+  }
+}
+
+/* 메인 콘텐츠 영역도 사이드바 너비에 맞춰 조정 */
+@media all and (min-width: 850px) {
+  #main-wrapper {
+    margin-left: 300px !important; /* 사이드바 너비와 동일하게 */
+  }
+}
+
+@media all and (min-width: 1650px) {
+  #main-wrapper {
+    margin-left: 320px !important; /* 큰 화면에서의 사이드바 너비와 동일하게 */
+  }
+}
+
+/* 사이드바 GIF 배경 적용 */
+#sidebar {
+  background: url('/assets/img/favicons/test.gif') !important; /* GIF 경로 */
+  background-size: cover !important; /* 전체 커버 */
+  background-position: center !important; /* 중앙 정렬 */
+  background-repeat: no-repeat !important; /* 반복 안함 */
+}
+
+/* GIF 위에 오버레이 추가 (텍스트 가독성을 위해) */
+#sidebar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3) !important; /* 반투명 오버레이 */
+  z-index: -1;
+}
